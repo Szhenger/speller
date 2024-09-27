@@ -58,6 +58,32 @@ Optimization Considerations:
 * The updated hash function enhances the distribution of words, reducing the number of collisions and speeding up the lookup process. By incorporating the ASCII values of all characters in the word, rather than just the first letter, this approach minimizes the chance that many words will hash to the same index, even if they share similar starting letters.
 * The increased number of buckets (N = 28) also helps spread the words more evenly, which further improves the spell-checker’s real-world performance by keeping lookup times low, even with large dictionaries.
 
-* ## Specification
+`speller.c`:
+The speller.c file serves as the main driver for the spell-checking program. Its primary purpose is to coordinate the process of loading a dictionary, checking the spelling of words in a text file, and reporting any misspellings along with relevant performance statistics. While you don’t need to modify speller.c, understanding how it interacts with dictionary.c is crucial for implementing an efficient spell-checker. Let’s walk through its functionality:
+* Program Structure and Usage:
+    * The speller.c file is structured to handle two key inputs:
+        * Dictionary file: A list of lowercase words, one per line, used to check against the input text. The dictionary can either be provided as a command-line argument or defaults to `dictionaries/large` if no dictionary is specified.
+        * Text file: The file to be spell-checked, which contains the words that will be compared to the loaded dictionary.
+* Loading the Dictionary:
+    * Dictionary Loading: The program starts by calling the load function from `dictionary.c`, which reads the dictionary file and loads all of its words into memory. If the dictionary cannot be loaded (because load is not yet implemented or there’s an error), the program will display an error message.
+    * The default dictionary (`dictionaries/large`) contains 143,091 words, which are all lowercase and sorted lexicographically. During development, a smaller dictionary (`dictionaries/small`) is provided to help with debugging. The dictionary must be efficiently loaded into memory so that the spell-checking process can run quickly.
+* Spell-Checking the Text File:
+    * Checking Words: After loading the dictionary, speller.c reads the text file word by word and passes each word to the check function (implemented in dictionary.c). The check function determines if each word is correctly spelled by searching for it in the dictionary. Any word not found in the dictionary is flagged as a misspelling.
+    * The program is designed to handle large text files efficiently, but during development, it’s recommended to use smaller text files for testing to avoid overwhelming memory structures with large datasets.
+* Benchmarking Performance:
+    * Timing Execution: One of the key features of speller.c is its use of the getrusage function, which allows for benchmarking (i.e., timing) the performance of the core functions from dictionary.c—load, check, size, and unload. This ensures that your implementations are not only functionally correct but also efficient in terms of real-world execution time.
+    * The benchmarked functions are:
+        * `load`: The time it takes to load the dictionary into memory.
+        * `check`: The time it takes to check the spelling of each word in the text file.
+        * `size`: The time it takes to return the number of words in the loaded dictionary.
+        * `unload`: The time it takes to free up all memory used by the dictionary.
+By benchmarking these functions, you can identify any performance bottlenecks in your implementation and optimize them to improve the overall speed of the program.
+
+
+
+
+
+
+## Specification
 
 TODO
