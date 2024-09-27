@@ -101,7 +101,7 @@ The spell-checker program processes an input text file and compares its words ag
 #### Command-line Usage:
 * `./speller [dictionary] src.txt`.
 * `dictionary` (optional): The path to a dictionary file containing a list of lowercase words, one per line. If omitted, the program defaults to `dictionaries/large`.
-* `source`: The path to the text file to be spell-checked.
+* `src.txt`: The path to the text file to be spell-checked.
 
 #### Functionality:
 * Load Dictionary:
