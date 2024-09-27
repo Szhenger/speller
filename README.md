@@ -34,12 +34,10 @@ The challenge of this program lies in implementing an efficient dictionary loadi
         * `unload`: This function frees up the memory used by the dictionary when the program is done.
 
 `dictionary.c`: We define the data structures and algorithms responsible for loading, storing, and accessing the dictionary of words. This file forms the backbone of the spell-checking functionality by implementing a hash table that allows for efficient lookups of words in the dictionary. Let’s break down some of the key components:
-`node` struct:
 * At the top of `dictionary.c`, a struct called `node` is defined. This struct represents a `node` in the hash table, and each node will store:
     * A `char` array to hold a word from the dictionary.
     * A pointer to the next `node`, which is essential for resolving collisions in the hash table (when two or more words hash to the same index).
 * By using a linked list structure, each hash bucket can hold multiple words, ensuring that even if two words hash to the same value, both can still be stored.
-`table` array:
 * A global pointer array named table is declared, representing the actual hash table. The hash table is an array of pointers, where each element in the array points to the head of a linked list (a chain of node structs) containing the words that hash to the same index.
 * The size of this array is determined by `N`, which is initially set to 26 (to 28) in line with the sample hash function, where each word is hashed based on its first letter (A-Z). However, depending on your hash function’s design, you may want to increase N to optimize performance by distributing the words more evenly across the table and reducing collisions.
 * The hash function is implemented in `dictionary.c`, although the initial version is fairly simple, using only the first letter of the word to compute its hash value. Specifically, it converts the first letter to lowercase and maps it to an index between 0 and 25 (for a to z).
