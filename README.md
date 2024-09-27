@@ -6,7 +6,7 @@ Given any file, this program `speller` spell-checks that file, using a hash tabl
 
 ## Background
 
-Spell-checking is a fundamental task in text processing, requiring algorithms that can efficiently compare input words against a pre-defined dictionary. When designing such algorithms, it's essential to consider not only their asymptotic complexity but also their real-world performance. For example, while two algorithms with time complexities of O(n) and O(2n) are asymptotically equivalent, in practice, the latter could feel twice as slow due to the constant factor of 2.
+Spell-checking is a fundamental task in text processing, requiring algorithms that can efficiently compare input words against a pre-defined dictionary. When designing such algorithms, it's essential to consider not only their asymptotic complexity but also their real-world performance. For example, while two algorithms with time complexities of `O(n)` and `O(2n)` are asymptotically equivalent, in practice, the latter could feel twice as slow due to the constant factor of 2.
 
 This spell-checker program is designed to prioritize wall-clock time, i.e., the actual time experienced by the user when running the program, rather than just the theoretical efficiency of the algorithm. To achieve this, the program focuses on optimizing both the loading of the dictionary into memory and the checking of words against the dictionary, ensuring that it runs as efficiently as possible in real-world scenarios.
 
@@ -42,7 +42,6 @@ The challenge of this program lies in implementing an efficient dictionary loadi
 `table` array:
 * A global pointer array named table is declared, representing the actual hash table. The hash table is an array of pointers, where each element in the array points to the head of a linked list (a chain of node structs) containing the words that hash to the same index.
 * The size of this array is determined by `N`, which is initially set to 26 (to 28) in line with the sample hash function, where each word is hashed based on its first letter (A-Z). However, depending on your hash function’s design, you may want to increase N to optimize performance by distributing the words more evenly across the table and reducing collisions.
-Hash Function:
 * The hash function is implemented in `dictionary.c`, although the initial version is fairly simple, using only the first letter of the word to compute its hash value. Specifically, it converts the first letter to lowercase and maps it to an index between 0 and 25 (for a to z).
 * While this approach works, it creates clusters of words in the same bucket (especially if many words start with the same letter), which can slow down lookups. To improve efficiency, the hash function has been redesigned to better distribute words across the 28 hash buckets. Instead of using only the first letter of each word, this hash function takes the ASCII average value of all characters in the word, calculates the average, and then applies the modulus operation (`% N`) to determine the correct bucket.
 * This method ensures that words are distributed more evenly across the hash table by considering every character in the word, rather than just the first letter. The average of the ASCII values helps to spread words with similar starting letters (like "apple" and "axe") into different buckets, reducing the number of collisions.
@@ -59,9 +58,9 @@ Optimization Considerations:
 * The increased number of buckets (`N = 28`) also helps spread the words more evenly, which further improves the spell-checker’s real-world performance by keeping lookup times low, even with large dictionaries.
 
 `speller.c`:
-The speller.c file serves as the main driver for the spell-checking program. Its primary purpose is to coordinate the process of loading a dictionary, checking the spelling of words in a text file, and reporting any misspellings along with relevant performance statistics. While you don’t need to modify speller.c, understanding how it interacts with dictionary.c is crucial for implementing an efficient spell-checker. Let’s walk through its functionality:
+The speller.c file serves as the main driver for the spell-checking program. Its primary purpose is to coordinate the process of loading a dictionary, checking the spelling of words in a text file, and reporting any misspellings along with relevant performance statistics. Let’s walk through its functionality:
 * Program Structure and Usage:
-    * The speller.c file is structured to handle two key inputs:
+    * The `speller.c` file is structured to handle two key inputs:
         * Dictionary file: A list of lowercase words, one per line, used to check against the input text. The dictionary can either be provided as a command-line argument or defaults to `dictionaries/large` if no dictionary is specified.
         * Text file: The file to be spell-checked, which contains the words that will be compared to the loaded dictionary.
 * Loading the Dictionary:
@@ -71,7 +70,7 @@ The speller.c file serves as the main driver for the spell-checking program. Its
     * Checking Words: After loading the dictionary, speller.c reads the text file word by word and passes each word to the check function (implemented in dictionary.c). The check function determines if each word is correctly spelled by searching for it in the dictionary. Any word not found in the dictionary is flagged as a misspelling.
     * The program is designed to handle large text files efficiently, but during development, it’s recommended to use smaller text files for testing to avoid overwhelming memory structures with large datasets.
 * Benchmarking Performance:
-    * Timing Execution: One of the key features of speller.c is its use of the getrusage function, which allows for benchmarking (i.e., timing) the performance of the core functions from dictionary.c—load, check, size, and unload. This ensures that your implementations are not only functionally correct but also efficient in terms of real-world execution time.
+    * Timing Execution: One of the key features of speller.c is its use of the getrusage function, which allows for benchmarking (i.e., timing) the performance of the core functions from `dictionary.c` — `load`, `check`, `size`, and `unload`. This ensures that your implementations are not only functionally correct but also efficient in terms of real-world execution time.
     * The benchmarked functions are:
         * `load`: The time it takes to load the dictionary into memory.
         * `check`: The time it takes to check the spelling of each word in the text file.
