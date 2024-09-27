@@ -87,12 +87,11 @@ By benchmarking these functions, you can identify any performance bottlenecks in
             * The number of words in the text file.
             * The total execution time for loading, checking, and unloading the dictionary.
 * These statistics help you evaluate the effectiveness of your implementation, both in terms of accuracy (correctly identifying misspelled words) and performance (how quickly the spell-checker processes files).
-
-Flow:
-* Load the dictionary.
-* Open the text file and read it word by word.
-* For each word, call check to see if it exists in the dictionary.
-* Report any misspellings.
+* Flow:
+    * Load the dictionary.
+    * Open the text file and read it word by word.
+    * For each word, call check to see if it exists in the dictionary.
+    * Report any misspellings.
 * Output performance statistics, including the number of misspelled words and the execution time for key functions.
 * Unload the dictionary from memory.
 
