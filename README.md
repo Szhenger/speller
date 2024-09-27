@@ -92,8 +92,8 @@ By benchmarking these functions, you can identify any performance bottlenecks in
     * Open the text file and read it word by word.
     * For each word, call check to see if it exists in the dictionary.
     * Report any misspellings.
-* Output performance statistics, including the number of misspelled words and the execution time for key functions.
-* Unload the dictionary from memory.
+    * Output performance statistics, including the number of misspelled words and the execution time for key functions.
+    * Unload the dictionary from memory.
 
 ## Specification
 
