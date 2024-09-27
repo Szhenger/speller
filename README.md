@@ -96,5 +96,22 @@ By benchmarking these functions, you can identify any performance bottlenecks in
     * Unload the dictionary from memory.
 
 ## Specification
+The spell-checker program processes an input text file and compares its words against a dictionary of valid words. The dictionary is loaded into memory from a file, and the program checks each word in the input text, identifying any misspelled words. The spell-checker provides performance statistics on the dictionary loading and spell-checking process.
 
-TODO
+#### Command-line Usage:
+* `./speller [dictionary] src.txt`.
+* `dictionary` (optional): The path to a dictionary file containing a list of lowercase words, one per line. If omitted, the program defaults to `dictionaries/large`.
+* `source`: The path to the text file to be spell-checked.
+
+#### Functionality:
+* Load Dictionary:
+    * Reads the dictionary file into memory, storing each word in a hash table to allow for efficient lookups.
+    * If the dictionary cannot be loaded, an error is displayed.
+* Spell-Check Text File:
+    * Reads the input text file word by word, using the check function to determine if each word is spelled correctly.
+    * Words not found in the dictionary are reported as misspelled.
+* Performance Benchmarking:
+    * The program measures and reports the time taken to load the dictionary, check the text, and unload the dictionary from memory.
+    * Statistics:
+        * Outputs the total number of misspelled words, the total number of words in the dictionary, and the total number of words in the text file.
+        * Displays the execution time for loading the dictionary, checking the words, and unloading the dictionary.
