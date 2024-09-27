@@ -56,7 +56,7 @@ Function Implementations:
     * `unload`: Frees all memory used by the hash table, ensuring there are no memory leaks when the program finishes executing.
 Optimization Considerations:
 * The updated hash function enhances the distribution of words, reducing the number of collisions and speeding up the lookup process. By incorporating the ASCII values of all characters in the word, rather than just the first letter, this approach minimizes the chance that many words will hash to the same index, even if they share similar starting letters.
-* The increased number of buckets (N = 28) also helps spread the words more evenly, which further improves the spell-checker’s real-world performance by keeping lookup times low, even with large dictionaries.
+* The increased number of buckets (`N = 28`) also helps spread the words more evenly, which further improves the spell-checker’s real-world performance by keeping lookup times low, even with large dictionaries.
 
 `speller.c`:
 The speller.c file serves as the main driver for the spell-checking program. Its primary purpose is to coordinate the process of loading a dictionary, checking the spelling of words in a text file, and reporting any misspellings along with relevant performance statistics. While you don’t need to modify speller.c, understanding how it interacts with dictionary.c is crucial for implementing an efficient spell-checker. Let’s walk through its functionality:
@@ -78,11 +78,23 @@ The speller.c file serves as the main driver for the spell-checking program. Its
         * `size`: The time it takes to return the number of words in the loaded dictionary.
         * `unload`: The time it takes to free up all memory used by the dictionary.
 By benchmarking these functions, you can identify any performance bottlenecks in your implementation and optimize them to improve the overall speed of the program.
+* Reporting Misspellings and Statistics:
+    * After checking all the words in the text file, the program reports:
+        * Misspellings: Each word from the text file that was not found in the dictionary.
+        * Statistics: The program also prints out key performance metrics such as:
+            * The total number of misspelled words.
+            * The number of words in the dictionary.
+            * The number of words in the text file.
+            * The total execution time for loading, checking, and unloading the dictionary.
+* These statistics help you evaluate the effectiveness of your implementation, both in terms of accuracy (correctly identifying misspelled words) and performance (how quickly the spell-checker processes files).
 
-
-
-
-
+Flow:
+* Load the dictionary.
+* Open the text file and read it word by word.
+* For each word, call check to see if it exists in the dictionary.
+* Report any misspellings.
+* Output performance statistics, including the number of misspelled words and the execution time for key functions.
+* Unload the dictionary from memory.
 
 ## Specification
 
