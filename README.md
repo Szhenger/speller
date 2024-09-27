@@ -13,7 +13,8 @@ This spell-checker program is designed to prioritize wall-clock time, i.e., the 
 The spell-checker consists of two main components:
 * `speller.c`: The main program that handles the reading of an input file, running the spell-check, and providing the results.
 * `dictionary.c`: Responsible for managing the dictionary of valid words, including loading the dictionary from disk and checking whether a word is correctly spelled.
-* These components are connected via `dictionary.h`, a header file that contains function prototypes shared between `speller.c` and `dictionary.c`. This modular structure allows for more organized and maintainable code, especially as the program grows in complexity.
+
+These components are connected via `dictionary.h`, a header file that contains function prototypes shared between `speller.c` and `dictionary.c`. This modular structure allows for more organized and maintainable code, especially as the program grows in complexity.
 
 The challenge of this program lies in implementing an efficient dictionary loading mechanism and a fast spell-checking algorithm that can handle large input files without noticeable delays, ensuring that the program runs quickly and efficiently even on large datasets.
 
