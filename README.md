@@ -114,6 +114,6 @@ The spell-checker program processes an input text file and compares its words ag
         * Outputs the total number of misspelled words, the total number of words in the dictionary, and the total number of words in the text file.
         * Displays the execution time for loading the dictionary, checking the words, and unloading the dictionary.
 
-## Credit
+## Credit and Disclaimer
 
 This problem originates from [CS50's Introduction to Computer Science](https://cs50.harvard.edu/x/2024/psets/5/speller/) at Harvard University with the `speller.c` made by the CS50 Team and any solution here is explicitly for educational purposes only.
