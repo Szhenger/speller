@@ -116,4 +116,4 @@ The spell-checker program processes an input text file and compares its words ag
 
 ## Credit
 
-This problem originates from [CS50's Introduction to Computer Science](https://cs50.harvard.edu/x/2024/psets/5/speller/) at Harvard University with the `speller.c` made by the CS50 Team.
+This problem originates from [CS50's Introduction to Computer Science](https://cs50.harvard.edu/x/2024/psets/5/speller/) at Harvard University with the `speller.c` made by the CS50 Team and any solution here is explicitly for educational purposes only.
